@@ -1,0 +1,279 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Ahmad | ContentEngine</title>
+    <link rel="icon" type="image/png" href="{% static 'logo.png' %}" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <style>
+      body {
+        background-color: #0f172a;
+        background-image: radial-gradient(
+          circle at top right,
+          #1e293b,
+          #0f172a
+        );
+        color: #f8fafc;
+        font-family:
+          "Segoe UI",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        padding-top: 80px;
+      }
+
+      /* Glassmorphism Navbar */
+      .navbar-custom {
+        background: rgba(15, 23, 42, 0.8) !important;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .content-card {
+        background: #1e293b;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .content-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(56, 189, 248, 0.3);
+      }
+
+      .text-gradient {
+        background: linear-gradient(to right, #38bdf8, #818cf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .profile-avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #38bdf8, #6366f1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        color: white;
+        margin: 0 auto 1.5rem;
+        border: 4px solid #0f172a;
+        box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+      }
+
+      .skill-badge {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        color: #38bdf8;
+        padding: 0.5rem 1rem;
+        border-radius: 50rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: inline-block;
+        margin: 0.25rem;
+      }
+
+      .project-icon {
+        font-size: 2rem;
+        color: #818cf8;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <nav
+      class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top py-3"
+    >
+      <div class="container">
+        <a class="navbar-brand fw-bold fs-4" href="{% url 'home' %}">
+          <i class="bi bi-braces text-info me-2"></i>ContentEngine
+        </a>
+
+        <div class="d-flex align-items-center ms-auto">
+          {% if request.user.is_authenticated %}
+          <a
+            href="{% url 'dashboard' %}"
+            class="btn btn-outline-info btn-sm fw-bold px-3 py-2 rounded-pill shadow-sm"
+          >
+            <i class="bi bi-grid-1x2-fill me-1"></i> Dashboard
+          </a>
+          {% else %}
+          <a
+            href="{% url 'login' %}"
+            class="btn btn-outline-light btn-sm fw-bold px-3 me-2 rounded-pill"
+            >Log In</a
+          >
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <div class="container my-5 flex-grow-1">
+      <div class="row justify-content-center mb-5 mt-3">
+        <div class="col-lg-8 text-center">
+          <h2 class="fw-bolder display-5 mb-3">
+            Meet the <span class="text-gradient">Developer</span>
+          </h2>
+          <p class="text-secondary fs-5">
+            Building tools for modern tech creators.
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="content-card p-4 p-xl-5 text-center h-100">
+            <div class="profile-avatar">
+              <i class="bi bi-person-fill"></i>
+            </div>
+            <h3 class="fw-bold text-light mb-1">Ahmad Siraj</h3>
+            <p class="text-info fw-medium mb-3">CS Student & Creator</p>
+            <p class="text-secondary small mb-4">
+              Computer Science student at the University of Gujrat, passionate
+              about full-stack development, AI, and teaching technology.
+            </p>
+
+            <div class="d-flex justify-content-center gap-3 mt-auto">
+              <a
+                href="#"
+                class="btn btn-outline-danger rounded-circle p-2 lh-1"
+                title="AHMAD TECH"
+                target="_blank"
+              >
+                <i class="bi bi-youtube fs-5"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ahmad-siraj-cs22/"
+                class="btn btn-outline-primary rounded-circle p-2 lh-1 border-primary text-primary"
+                title="LinkedIn"
+                target="_blank"
+                onmouseover="
+                  this.classList.remove('text-primary');
+                  this.classList.add('text-white');
+                "
+                onmouseout="
+                  this.classList.remove('text-white');
+                  this.classList.add('text-primary');
+                "
+              >
+                <i class="bi bi-linkedin fs-5"></i>
+              </a>
+              <a
+                href="https://github.com/ahmadcs22"
+                class="btn btn-outline-light rounded-circle p-2 lh-1"
+                title="GitHub"
+                target="_blank"
+              >
+                <i class="bi bi-github fs-5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="content-card p-4 p-xl-5 h-100">
+            <h4
+              class="fw-bold mb-4 border-bottom border-secondary border-opacity-25 pb-2"
+            >
+              <i class="bi bi-code-square text-info me-2"></i>Tech Stack &
+              Interests
+            </h4>
+            <div class="mb-5">
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">Django</span>
+              <span class="skill-badge">MERN Stack</span>
+              <span class="skill-badge">PostgreSQL</span>
+              <span class="skill-badge">Machine Learning</span>
+              <span class="skill-badge">Data Science</span>
+            </div>
+
+            <h4
+              class="fw-bold mb-4 border-bottom border-secondary border-opacity-25 pb-2"
+            >
+              <i class="bi bi-rocket-takeoff text-info me-2"></i>Current Focus
+            </h4>
+
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div
+                  class="p-3 rounded bg-dark bg-opacity-50 h-100 border border-secondary border-opacity-25"
+                >
+                  <div class="project-icon"><i class="bi bi-youtube"></i></div>
+                  <h5 class="fw-bold text-light">AHMAD TECH</h5>
+                  <p class="text-secondary small mb-0">
+                    Growing a tech-focused YouTube channel, currently scripting
+                    and producing a comprehensive Python course.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div
+                  class="p-3 rounded bg-dark bg-opacity-50 h-100 border border-secondary border-opacity-25"
+                >
+                  <div class="project-icon"><i class="bi bi-cpu"></i></div>
+                  <h5 class="fw-bold text-light">Skill-Sync</h5>
+                  <p class="text-secondary small mb-0">
+                    Developing an AI-based job skill gap and trend analyzer for
+                    my final year university project.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div
+                  class="p-3 rounded bg-dark bg-opacity-50 h-100 border border-secondary border-opacity-25"
+                >
+                  <div class="project-icon"><i class="bi bi-globe"></i></div>
+                  <h5 class="fw-bold text-light">Web Platforms</h5>
+                  <p class="text-secondary small mb-0">
+                    Building robust web applications, including a WC 2026 Django
+                    project and a Cricket stats blog site.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div
+                  class="p-3 rounded bg-dark bg-opacity-50 h-100 border border-secondary border-opacity-25"
+                >
+                  <div class="project-icon">
+                    <i class="bi bi-mortarboard"></i>
+                  </div>
+                  <h5 class="fw-bold text-light">Future Goals</h5>
+                  <p class="text-secondary small mb-0">
+                    Preparing to pursue a Master's degree in Data Science
+                    abroad, alongside freelance web development and photography.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer
+      class="bg-dark text-center py-4 border-top border-secondary border-opacity-25 mt-auto"
+    >
+      <div class="container text-secondary small">
+        &copy; 2026 ContentEngine | Developed by Ahmad Siraj.
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
